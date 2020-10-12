@@ -1,0 +1,108 @@
+{
+    "twats": [
+        {
+            "role": "Prime Minister",
+            "name": "Boris Johnson"
+        },
+        {
+            "role": "Chancellor",
+            "name": "Rishi Sunak"
+        },
+        {
+            "role": "Home Secretary",
+            "name": "Priti Patel"
+        },
+        {
+            "role": "Foreign Secretary",
+            "name": "Dominic Raab"
+        },
+        {
+            "role": "Chancellor of the Duchy of Lancaster",
+            "name": "Michael Gove"
+        },
+        {
+            "role": "Health Secretary",
+            "name": "Matt Hancock"
+        },
+        {
+            "role": "Defence Secretary",
+            "name": "Ben Wallace"
+        },
+        {
+            "role": "International Trade Secretary",
+            "name": "Liz Truss"
+        },
+        {
+            "role": "Environment Secretary",
+            "name": "George Eustice"
+        },
+        {
+            "role": "Education Secretary",
+            "name": "Gavin Williamson"
+        },
+        {
+            "role": "Culture Secretary",
+            "name": "Oliver Dowden"
+        },
+        {
+            "role": "Business Secretary",
+            "name": "Alok Sharma"
+        },
+        {
+            "role": "MHCLG Secretary",
+            "name": "Robert Jenrick"
+        },
+        {
+            "role": "Work & Pensions Secretary",
+            "name": "Thérèse Coffey"
+        },
+        {
+            "role": "Justice Secretary and Lord Chancellor",
+            "name": "Robert Buckland"
+        },
+        {
+            "role": "International Development Secretary",
+            "name": "Anne-Marie Trevelyan"
+        },
+        {
+            "role": "Transport Secretary",
+            "name": "Grant Shapps"
+        },
+        {
+            "role": "Welsh Secretary",
+            "name": "Simon Hart"
+        },
+        {
+            "role": "Scottish Secretary",
+            "name": "Alister Jack"
+        },
+        {
+            "role": "Northern Irish Secretary",
+            "name": "Brandon Lewis"
+        },
+        {
+            "role": "Attorney General",
+            "name": "Suella Braverman"
+        },
+        {
+            "role": "Chief Secretary to the Treasury",
+            "name": "Stephen Barclay"
+        },
+        {
+            "role": "Party Chairman",
+            "name": "Amanda Milling"
+        },
+        {
+            "role": "Leader of the House of Commons",
+            "name": "Jacob Rees-Mogg"
+        },
+        {
+            "role": "Chief Whip",
+            "name": "Mark Spencer"
+        },
+        {
+            "role": "Leader of the House of Lords",
+            "name": "Baroness Evans"
+        }
+    ]
+}
