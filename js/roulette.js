@@ -5,92 +5,81 @@ loadJSON(function (response) {
   var actual_JSON = JSON.parse(response);
 });
 
-var startAngle = 0;
-var arc = Math.PI / (options.length / 2);
-var spinTimeout = null;
-var spinArcStart = 10;
-var spinTime = 0;
-var spinTimeTotal = 0;
-let imgObj = new Image();
-var ctx;
+const imgObj = new Image();
+const canvas = document.getElementById("canvas");
+const radius = canvas.width / 2;
+console.log(imgObj.width / 2);
+const imgPath = 'img/skull.png';
+imgObj.src = imgPath;
+const cx = imgObj.width / 2;
+const cy = radius;
+const segmentCount = 10;
+const segmentAngle = Math.PI / segmentCount * 2;
+const ctx = canvas.getContext("2d");
+const spinButton = document.getElementById('spinButton');
+const imageWidth = imgObj.width;
+const speed = 5000;
 
-document.getElementById("spin").addEventListener("click", spin);
+let delta;
+let startTime = false;
 
-function drawRouletteWheel(imgObj, x, y, cx, cy, angle) {
-  let canvasWidth = 500;
-  let canvas = document.getElementById("canvas");
-  let segmentCount = 10;
-  let segmentAngle = Math.PI / segmentCount * 2;
-  let segmentDegrees = 360 / segmentCount;
-  let ang = 0;
+// Spin action!
+spinButton.addEventListener('click', function (event) {
+  spin();
+  event.target.disabled = true;
+})
 
-  if (canvas.getContext) {
-    ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clear 
-    let origin = canvas.width / 2;
-    let radius = canvas.width * 0.8;
-    // let x = origin;
-    // let y = origin;
+let offsetX;
+let offsetY;
+
+function drawRouletteWheel(imgObj, angle) {
+
+  if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.width);
-
-    let cx = 0;
-    let cy = radius / 2;
     ctx.save();
 
     for (let i = 0; i < segmentCount; i++) {
-      let imgPath = 'img/skull.png';
-      // let imgObj = new Image();
-      imgObj.src = imgPath;
-      let imageWidth = imgObj.width;
-      ctx.setTransform(1, 0, 0, 1, x, y);  // set the rotation origin
+      ctx.setTransform(1, 0, 0, 1, canvas.width / 2, canvas.width / 2);  // set the rotation origin
       ctx.rotate(i * segmentAngle + angle); // rotate
-      ctx.drawImage(imgObj, -cx - imageWidth / 2, -cy - imageWidth / 2); // draw image offset to put cx,cy at the point of rotation
+      ctx.drawImage(imgObj, -imgObj.width / 2, -radius); // draw image offset to put cx,cy at the point of rotation
       ctx.setTransform(1, 0, 0, 1, 0, 0); // restore the transform
     }
   }
 }
 
-let delta;
-let randomChunk = Math.random() * 1000;
-let speed = 5000 + randomChunk;
-let newTime;
-let oldTime;
-let startTime = false;
 
-let mainLoop = function (time) { // time is passed by  requestAnimationFrame
+/**
+ * Main loop mofo!
+ * @param {*} time This is passed automatically by requestAnimationFrame() 
+ */
+function mainLoop(time) {
+
+  // Do this on first call...
   if (!startTime) {
     startTime = time;
   }
+
   time = time - startTime;
-  // console.log('time', time);
   if (imgObj.complete) {
     delta = speed / (time ^ 2);
-    // console.log('delta', delta);
     if (delta < 1.25) {
       delta = prevDelta;
-      startTime = false;
+      startTime = false; // Resest timer
+      spinButton.disabled = false;
       return;
     }
-    drawRouletteWheel(imgObj, 250, 250, imgObj.width / 2, imgObj.height * 0.8, delta);
+
+    drawRouletteWheel(imgObj, delta);
     prevDelta = delta;
   }
   requestAnimationFrame(mainLoop);
-  // mainLoop(time);
 }
 
-let getNewTime = function (time) {
-  return time;
-}
-
+/**
+ * Make the damn thing go
+ */
 function spin() {
-  // startTime = requestAnimationFrame(getNewTime);
-  console.log(startTime);
   requestAnimationFrame(mainLoop);
-  // mainLoop(oldTime);
 }
 
-// requestAnimationFrame(mainLoop); // starts the animation
-
-// window.onLoad = drawRouletteWheel(0);
-// window.onLoad = dosomerotate();
-// window.onLoad = drawWheel();
+drawRouletteWheel(imgObj, 0) 
