@@ -40,7 +40,6 @@ let offsetX;
 let offsetY;
 
 function drawRouletteWheel(imgObj, angle) {
-
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.width);
     ctx.save();
