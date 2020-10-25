@@ -5,6 +5,13 @@ loadJSON(function (response) {
   var actual_JSON = JSON.parse(response);
 });
 
+/*
+ * NOTES:
+ *
+ * Get images from canvas:
+ * https://stackoverflow.com/questions/10257781/can-i-get-image-from-canvas-element-and-use-it-in-img-src-tag
+ */
+
 const imgObj = new Image();
 const canvas = document.getElementById("canvas");
 const radius = canvas.width / 2;
@@ -47,6 +54,9 @@ function drawRouletteWheel(imgObj, angle) {
   }
 }
 
+function getChosen() {
+
+}
 
 /**
  * Main loop mofo!
