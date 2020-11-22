@@ -1,0 +1,34 @@
+{
+  "devDependencies": {
+    "eslint": "^7.12.0",
+    "eslint-config-standard": "^15.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.2",
+    "lehre": "^1.3.5"
+  },
+  "name": "twat-roulette",
+  "description": "Get random twats on demand",
+  "version": "1.0.0",
+  "main": "index.html",
+  "dependencies": {
+    "commander": "^6.1.0",
+    "lodash": "^4.17.20",
+    "to-fast-properties": "^2.0.0",
+    "typescript": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pogpog/twat-roulette.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pogpog/twat-roulette/issues"
+  },
+  "homepage": "https://github.com/pogpog/twat-roulette#readme"
+}
