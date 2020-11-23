@@ -1,5 +1,3 @@
-var options = ["$100", "$10", "$25", "$250", "$30", "$1000", "$1", "$200", "$45", "$500", "$5", "$20", "Lose", "$1000000", "Lose", "$350", "$5", "$99"];
-
 // Not wolrking for reasons unknown.
 // loadJSON(function (response) {
 //   // Parse JSON string into object
@@ -11,133 +9,65 @@ const twats = [
   {
     "role": "Prime Minister",
     "name": "Boris Johnson",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://m.media-amazon.com/images/I/51YrkmaZgpL.jpg"
   },
   {
     "role": "Chancellor",
     "name": "Rishi Sunak",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQykLOWXjuDW4VPpCKKBvQcI9rkS4wOJYH8DQ&usqp=CAU"
   },
   {
     "role": "Home Secretary",
     "name": "Priti Patel",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://www.funkybunky.co.uk/media/ecom/prodlg/pritipatel.jpg"
   },
   {
     "role": "Foreign Secretary",
     "name": "Dominic Raab",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://www.bighedz.com/657-large_default/dominic-raab-brexit-life-size-card-face-mask.jpg"
   },
   {
     "role": "Chancellor of the Duchy of Lancaster",
     "name": "Michael Gove",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://images.partydelights.co.uk/MASK/10/27/front/v1/fac/1.jpg"
   },
   {
     "role": "Health Secretary",
     "name": "Matt Hancock",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://www.funkybunky.co.uk/media/ecom/prodlg/amh.jpg"
   },
   {
-    "role": "Defence Secretary",
-    "name": "Ben Wallace",
-    "imgPath": "img/skull.png"
+    "role": "Machiavellian Gollum",
+    "name": "Dominic Cummings",
+    "imgPath": "https://i.ebayimg.com/images/g/ZiMAAOSwS5ReTBIv/s-l400.jpg"
   },
   {
-    "role": "International Trade Secretary",
-    "name": "Liz Truss",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Environment Secretary",
-    "name": "George Eustice",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Education Secretary",
-    "name": "Gavin Williamson",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Culture Secretary",
-    "name": "Oliver Dowden",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Business Secretary",
-    "name": "Alok Sharma",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "MHCLG Secretary",
-    "name": "Robert Jenrick",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Work & Pensions Secretary",
-    "name": "Thérèse Coffey",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Justice Secretary and Lord Chancellor",
-    "name": "Robert Buckland",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "International Development Secretary",
-    "name": "Anne-Marie Trevelyan",
-    "imgPath": "img/skull.png"
+    "role": "Some Dodgy Bloke in Ladbrokes",
+    "name": "Nigel Farage",
+    "imgPath": "https://m.media-amazon.com/images/I/61F2scOIhuL._AC_SS350_.jpg"
   },
   {
     "role": "Transport Secretary",
     "name": "Grant Shapps",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Welsh Secretary",
-    "name": "Simon Hart",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Scottish Secretary",
-    "name": "Alister Jack",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Northern Irish Secretary",
-    "name": "Brandon Lewis",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Attorney General",
-    "name": "Suella Braverman",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Chief Secretary to the Treasury",
-    "name": "Stephen Barclay",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Party Chairman",
-    "name": "Amanda Milling",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://i.ebayimg.com/images/g/xdoAAOSwzgBY1SK7/s-l400.jpg"
   },
   {
     "role": "Leader of the House of Commons",
     "name": "Jacob Rees-Mogg",
-    "imgPath": "img/skull.png"
+    "imgPath": "https://i.ebayimg.com/images/g/bUUAAOSwLaBZzJ7W/s-l400.jpg"
   },
-  {
-    "role": "Chief Whip",
-    "name": "Mark Spencer",
-    "imgPath": "img/skull.png"
-  },
-  {
-    "role": "Leader of the House of Lords",
-    "name": "Baroness Evans"
-  }
 ];
+
+/**
+ * Make an array of image objects based on the twat array.
+ */
+const imageArray = twats.map(function (item) {
+  const imgObj = new Image();
+  imgObj.src = item.imgPath;
+  imgObj.width = 100;
+  imgObj.height = 100;
+  return imgObj;
+});
 
 /*
  * NOTES:
@@ -146,20 +76,15 @@ const twats = [
  * https://stackoverflow.com/questions/10257781/can-i-get-image-from-canvas-element-and-use-it-in-img-src-tag
  */
 
-const imgObj = new Image();
+// const imgObj = new Image();
 const canvas = document.getElementById("canvas");
 const radius = canvas.width / 2;
-console.log(imgObj.width / 2);
-const imgPath = 'img/skull.png';
-imgObj.src = imgPath;
-const cx = imgObj.width / 2;
-const cy = radius;
 const segmentCount = twats.length;
 const segmentAngle = Math.PI / segmentCount * 2;
 const ctx = canvas.getContext("2d");
 const spinButton = document.getElementById('spinButton');
-const imageWidth = imgObj.width;
 const speed = 5000;
+const imgWidth = imgHeight = 100;
 
 let delta;
 let startTime = false;
@@ -173,24 +98,23 @@ spinButton.addEventListener('click', function (event) {
 let offsetX;
 let offsetY;
 
-
-function drawRouletteWheel(imgObj, angle) {
+function drawRouletteWheel(imageArray, angle, myRand) {
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.width);
     ctx.save();
 
     for (let i = 0; i < segmentCount; i++) {
-      // imgObj.src = twats[i].imgPath;
+      let imgObj = imageArray[i];
       ctx.setTransform(1, 0, 0, 1, canvas.width / 2, canvas.width / 2);  // set the rotation origin
-      ctx.rotate(i * segmentAngle + angle); // rotate
-      ctx.drawImage(imgObj, -imgObj.width / 2, -radius); // draw image offset to put cx,cy at the point of rotation
+      ctx.rotate(i * segmentAngle + angle + myRand); // rotate
+      ctx.drawImage(imgObj, -imgObj.width / 2, -radius, imgWidth, imgHeight); // draw image offset to put cx,cy at the point of rotation
       ctx.setTransform(1, 0, 0, 1, 0, 0); // restore the transform
     }
   }
 }
 
-function getChosen() {
-}
+
+let myRand = 0;
 
 /**
  * Main loop mofo!
@@ -204,7 +128,7 @@ function mainLoop(time) {
   }
 
   time = time - startTime;
-  if (imgObj.complete) {
+  if (true) {
     delta = speed / (time ^ 2);
     if (delta < 1.25) {
       delta = prevDelta;
@@ -213,7 +137,7 @@ function mainLoop(time) {
       return;
     }
 
-    drawRouletteWheel(imgObj, delta);
+    drawRouletteWheel(imageArray, delta, myRand);
     prevDelta = delta;
   }
   requestAnimationFrame(mainLoop);
@@ -223,7 +147,9 @@ function mainLoop(time) {
  * Make the damn thing go
  */
 function spin() {
+  myRand = Math.floor(Math.random() * twats.length);
+  console.log(myRand);
   requestAnimationFrame(mainLoop);
 }
 
-drawRouletteWheel(imgObj, 0) 
+drawRouletteWheel(imageArray, 0) 
