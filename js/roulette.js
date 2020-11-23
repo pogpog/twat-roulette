@@ -85,6 +85,13 @@ const ctx = canvas.getContext("2d");
 const spinButton = document.getElementById('spinButton');
 const speed = 5000;
 const imgWidth = imgHeight = 100;
+const lineColor = '#ccc';
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+const pointerWidth = 50;
+const pointerHeight = 60;
+
+const circleRadius = 200;
 
 let delta;
 let startTime = false;
@@ -102,18 +109,61 @@ function drawRouletteWheel(imageArray, angle, myRand) {
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.width);
     ctx.save();
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, circleRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = 'black';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY - circleRadius);
+    ctx.lineTo(centerX - pointerWidth, centerY - circleRadius);
+    ctx.lineTo(centerX, centerY - circleRadius - pointerHeight);
+    ctx.lineTo(centerX + pointerWidth, centerY - circleRadius);
+    ctx.lineTo(centerX, centerY - circleRadius);
+
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    let highestElement;
 
     for (let i = 0; i < segmentCount; i++) {
       let imgObj = imageArray[i];
       ctx.setTransform(1, 0, 0, 1, canvas.width / 2, canvas.width / 2);  // set the rotation origin
       ctx.rotate(i * segmentAngle + angle + myRand); // rotate
       ctx.drawImage(imgObj, -imgObj.width / 2, -radius, imgWidth, imgHeight); // draw image offset to put cx,cy at the point of rotation
+
+      // ctx.beginPath();
+      // ctx.arc(centerX / 3, centerY / 1, dotRadius / 2, 0, 2 * Math.PI, false);
+      // ctx.fillStyle = 'green';
+      // ctx.fill();
+
+      ctx.beginPath();
+      ctx.lineCap = "round";
+      ctx.arc(78, 235, 6, 0, 2 * Math.PI, false);
+      ctx.fillStyle = lineColor;
+      ctx.fill();
+      ctx.moveTo(80, 240);
+      ctx.lineTo(120, 360);
+      ctx.strokeStyle = lineColor;
+      ctx.lineWidth = 5;
+      ctx.stroke();
+
       ctx.setTransform(1, 0, 0, 1, 0, 0); // restore the transform
     }
   }
 }
 
+function displayChoice() {
 
+}
+
+/**
+ * Used to create random stopping point
+ */
 let myRand = 0;
 
 /**
@@ -134,9 +184,9 @@ function mainLoop(time) {
       delta = prevDelta;
       startTime = false; // Resest timer
       spinButton.disabled = false;
+      displayChoice();
       return;
     }
-
     drawRouletteWheel(imageArray, delta, myRand);
     prevDelta = delta;
   }
